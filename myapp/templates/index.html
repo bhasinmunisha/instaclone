@@ -5,7 +5,9 @@
     <title>Instagram Clone</title>
 </head>
 <body>
+
 	<div class="main">
+
             <h1> Instagram Clone</h1>
             <h3>Sign Up</h3>
     </div>
@@ -16,7 +18,7 @@
 
             <div>
                 <label for="username">Username: </label>
-                <input id="username" type="text" name="username" value={{ username }}>
+                <input id="username" type="text" name="username" minlength="4" value={{ username }}>
             </div>
 
             <div>
@@ -30,15 +32,29 @@
             </div>
 
             <div>
-                <label for="password">Password: </label>
-                <input id="password" type="password" name="password" value={{ password }}>
+
+                <label for="password"> New Password: </label>
+
+                <input id="password" type="password" name="password" minlength="5" value={{ password }}>
             </div>
-                <input type="submit" value="Sign Up">
+            {% if form.errors %}
+<div id="form-error">
+	<p>The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after making the following changes:</p>
+	<ul>
+	{% for field in form %}
+	<li>{{ field.errors|striptags }}</li>
+	{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+                <input type="submit" value="Submit">
         </form>
 
 
     </div><br><br>
 
-    <div><h3>Already a user?</h3><a href="login/">Login</a> </div>
+    <div><h3>Already a user?</h3><a href="login/">
+        <input type= "login" value="Login"></a> </div>
 </body>
 </html>
